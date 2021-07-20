@@ -1,0 +1,14 @@
+  {% if product.available  %}   
+        {% form 'product', product %}
+        <input type="hidden" name="id" value="{{ product.variants.first.id }}" /> 
+
+        <div class="product_payments_btns product_payments_btns_coll_list  {% if section.settings.show_collection_sidebar %} sidebar_enabled_row{% endif %}">
+          <input type="submit" value="{{ 'products.product.add_to_cart' | t }}" class="btn_c" />
+          {{ form | payment_button }}
+        </div>
+        {% endform %}
+        {% else %}
+        <input type="submit" 
+               value="Soldout" 
+               class="btn_c" />
+        {% endif %}
